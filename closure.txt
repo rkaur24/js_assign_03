@@ -1,0 +1,61 @@
+CLOSURES
+
+Before coming to the concept of Closures, it is important to know what is an INNER FUNCTION ?
+Firstly, JavaScript allows nesting.
+An Inner Function is a function created inside other function.
+
+The flow goes this way:
+
+Outer_function()
+{
+ Inner_Function()
+  {
+    
+  }
+}
+ Whenever the outer function is called, an instance of the inner function is created at the same time.
+ The inner function has full access to all the variables,constants and parameters declared in outer function ( and ofcourse global as well).
+ 
+DEFINING CLOSURES
+ 
+  Eloquent JavaScript defines closures as 'The feature of being able to reference a specific instance of local variables in an enclosing function.'
+  Another definition from w3schools.com states Closures as :'A closure is a function having access to the parent scope, even after the parent function has closed.' 
+  
+  Simplifying it,
+  A closure is basically an inner function that has access to the outer function’s variables.
+  
+  Quoting an example:
+ --------------------------------------------------------------------------------------------------------------------------- 
+  function calc_cube(num)
+  {
+   var cube = num * num * num ;
+   
+    function print_cube() //inner_function
+    {
+     console.log(`The cube of ${num} is ${cube}`); //inner function has access to variable and parameters of outer function
+    }
+    return print_cube();
+  }
+  
+  calc_cube(9);
+ --------------------------------------------------------------------------------------------------------------------------- 
+ 
+ In this example, calc_cube() is an outer function accepting parameter 'num' and having variable 'cube'. It simply calculates the cube of the passed numbr.
+ print_cube() is an inner function that logs the value of cube calculated in outer function (calc_cube()).
+ 
+ This example clearly shows that the inner function (print_cube()) has full access to the variables and arguments of the outer function (calc_cube()).
+ 
+ Basically, the main idea is that the scope of variables remains within the '{}'.
+ Since the block of outer function (or the scope of its variables) starts with a '{' and ends with a '}'. And because the inner function is also contained within the '{}', so it has an access to all the variabls declared within that block.
+ 
+ 
+ 
+REFERENCES:
+ 
+ Eloquent JavaScript : http://eloquentjavascript.net/03_functions.html
+ 
+ http://www.w3schools.com/js/js_function_closures.asp
+ 
+ https://www.sitepoint.com/javascript-closures-demystified
+ 
+ https://www.youtube.com/watch?v=-jysK0nlz7A (A video link that helped me the most in understanding the concept better)
